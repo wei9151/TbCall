@@ -5,9 +5,12 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.util.Log;
 
+import com.tbcall.bean.SoundBean;
 import com.tbcall.config.AppConfig;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 import static com.tbcall.config.AppConfig.LOG_TAG;
 
@@ -17,7 +20,7 @@ import static com.tbcall.config.AppConfig.LOG_TAG;
 public class SoundTool {
     public MediaRecorder mRecorder;
     public MediaPlayer mPlayer;
-    public boolean isRecording;
+    public int startIndex;
     public Activity context;
     public String newFileIndex;
 
@@ -75,12 +78,50 @@ public class SoundTool {
             mPlayer = new MediaPlayer();
         }
         try {
-            mPlayer.reset();
-            mPlayer.setDataSource(FileTool.getAppAudioPath() + fileName);
+            mPlayer.reset();                                                //重置
+            mPlayer.setDataSource(FileTool.getAppAudioPath() + fileName);   //设置播放文件源
             mPlayer.prepare();
             mPlayer.start();
+            mPlayer.setVolume(1f, 1f);                                      //设置音量
         } catch (IOException e) {
             Log.i(LOG_TAG, "播放录音---失败");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 播放录音
+     */
+    public void startLoopPlaying(final ArrayList<SoundBean> soundBenaList) {
+        Log.i(LOG_TAG, "-------循环播放录音");
+        if (soundBenaList == null || soundBenaList.isEmpty()) {
+            Log.i(LOG_TAG, "录音文件列表为空，返回");
+            return;
+        }
+        if (mPlayer == null) {
+            mPlayer = new MediaPlayer();
+        }
+        try {
+            final int size = soundBenaList.size();
+            startIndex = new Random().nextInt(size);
+            Log.i(LOG_TAG, " 生成的随机数 radInt:" + startIndex);
+
+            startPlaying(soundBenaList.get(startIndex).fileName);
+            mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    if (startIndex >= size - 1) {
+                        startIndex = 0;
+                    } else {
+                        startIndex++;
+                    }
+                    Log.i(LOG_TAG, " 循环播放 startIndex:" + startIndex);
+                    startPlaying(soundBenaList.get(startIndex).fileName);
+                }
+            });
+
+        } catch (Exception e) {
+            Log.i(LOG_TAG, "循环播放录音--失败");
             e.printStackTrace();
         }
     }

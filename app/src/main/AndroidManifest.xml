@@ -21,7 +21,7 @@
         </activity>
 
         <activity android:name=".SoundActivity" android:screenOrientation="portrait"/>
-        <!--<activity android:name=".DemoActivity_1" android:screenOrientation="portrait"/>-->
+        <activity android:name=".DoCallActivity" android:screenOrientation="portrait"/>
         <!--<activity android:name=".fengfa.FengfaActivity" android:screenOrientation="portrait"/>-->
     </application>
 

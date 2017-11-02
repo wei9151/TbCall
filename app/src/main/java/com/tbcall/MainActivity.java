@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
         findViewById(R.id.tv_center).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, SoundActivity.class));      //跳转-打电话
+                startActivity(new Intent(MainActivity.this, DoCallActivity.class));      //跳转-打电话
             }
         });
 
@@ -102,6 +102,9 @@ public class MainActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     Log.i(LOG_TAG, " 点击了第 " + (position+1) + " 行");
+                    Intent intent = new Intent(MainActivity.this, DoCallActivity.class);
+                    intent.putExtra("bean", phoneList.get(position));
+                    startActivity(intent);                                               //跳转-打电话
                 }
             });
 
@@ -128,6 +131,9 @@ public class MainActivity extends Activity {
         phoneList.add(new MainPhoneBean("李彦宏", "北京联通", "10/31"));
         phoneList.add(new MainPhoneBean("刘德华", "香港移动", "10/30"));
         phoneList.add(new MainPhoneBean("邓超", "上海移动", "10/28"));
+        phoneList.add(new MainPhoneBean("何炅", "湖南联通", "10/27"));
+        phoneList.add(new MainPhoneBean("汪涵", "长沙移动", "10/26"));
+        phoneList.add(new MainPhoneBean("武莲村长", "岳阳移动", "10/25"));
     }
 
     @Override

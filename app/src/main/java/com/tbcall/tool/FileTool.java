@@ -96,7 +96,7 @@ public class FileTool {
             bean.fileName = files[i].getName();
             bean.lastModified = files[i].lastModified();
             bean.fileTime = sdf.format(new Date(files[i].lastModified()));
-            Log.i(LOG_TAG, (i+1) + " 文件名：" + bean.fileName + "----- 时间: " + bean.fileTime);
+            Log.i(LOG_TAG, (i+1) + " 文件名：" + bean.fileName + "  时间: " + bean.fileTime);
             soundBenaList.add(bean);
         }
         Collections.sort(soundBenaList, new FileComparator());  //排序

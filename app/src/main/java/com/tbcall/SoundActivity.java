@@ -25,7 +25,7 @@ import static com.tbcall.config.AppConfig.LOG_TAG;
  */
 public class SoundActivity extends Activity {
 
-    private TextView tv_start1, tv_stop1, tv_start2, tv_stop2;
+    private TextView tv_start1, tv_stop1, tv_stop2;
     private SoundTool soundTool;
 
     private ListView lv_sound;

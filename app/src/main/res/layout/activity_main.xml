@@ -34,12 +34,6 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="10dp"
-        android:background="#c1bfc0" />
-
     <ListView
         android:id="@+id/lv_phone"
         android:layout_width="match_parent"
