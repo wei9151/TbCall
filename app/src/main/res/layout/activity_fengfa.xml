@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.testpro.ndkdemo.fengfa.BigLayout
+        android:id="@+id/bigLayout1"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:gravity="center"
+        android:background="#081799">
+
+        <com.testpro.ndkdemo.fengfa.MiddleLayout
+            android:id="@+id/middleLayout1"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:background="#61a65a">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="110dp"
+                android:layout_height="90dp"
+                android:background="#911e61"
+                android:gravity="center"
+                android:text="最底层view"
+                android:textColor="#ffffff"
+                android:textSize="13dp" />
+
+        </com.testpro.ndkdemo.fengfa.MiddleLayout>
+
+
+    </com.testpro.ndkdemo.fengfa.BigLayout>
+
+    <TextView
+        android:id="@+id/tvSet1"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:background="#396fda"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="设置clickable(顶层)"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tvSet2"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:background="#396fda"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="设置clickable(中间层)"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
+
+</LinearLayout>
